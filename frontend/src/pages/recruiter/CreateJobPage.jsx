@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Briefcase,
   Building,
@@ -14,6 +14,8 @@ import api from '../../services/api';
 
 const CreateJobPage = () => {
   const navigate = useNavigate();
+  const { jobId } = useParams();
+  const isEditMode = Boolean(jobId);
 
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
@@ -32,6 +34,40 @@ const CreateJobPage = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!jobId) return;
+    const fetchJob = async () => {
+      try {
+        setLoading(true);
+        const res = await api.get(`/jobs/${jobId}`);
+        if (res.success && res.data) {
+          const job = res.data;
+          setTitle(job.title || '');
+          setCompany(job.company || '');
+          setDescription(job.description || '');
+          setRequiredSkills((job.requiredSkills || []).join(', '));
+          setPreferredSkills((job.preferredSkills || []).join(', '));
+          setQualification(job.qualification || '');
+          setExperienceMin(job.experienceMin ?? 0);
+          setExperienceMax(job.experienceMax ?? 5);
+          setSalaryMin(job.salaryMin ?? 0);
+          setSalaryMax(job.salaryMax ?? 0);
+          setLocation(job.location || '');
+          setEmploymentType(job.employmentType || 'Full-time');
+          setWorkplaceType(job.workplaceType || 'remote');
+          if (job.applicationDeadline) {
+            setApplicationDeadline(new Date(job.applicationDeadline).toISOString().split('T')[0]);
+          }
+        }
+      } catch (err) {
+        setError(err.message || 'Failed to load job details');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJob();
+  }, [jobId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,12 +97,19 @@ const CreateJobPage = () => {
         applicationDeadline: applicationDeadline || null,
       };
 
-      const res = await api.post('/jobs', payload);
-      if (res.success) {
-        navigate('/recruiter/dashboard');
+      if (isEditMode) {
+        const res = await api.put(`/jobs/${jobId}`, payload);
+        if (res.success) {
+          navigate('/recruiter/dashboard');
+        }
+      } else {
+        const res = await api.post('/jobs', payload);
+        if (res.success) {
+          navigate('/recruiter/dashboard');
+        }
       }
     } catch (err) {
-      setError(err.message || 'Failed to post job');
+      setError(err.message || (isEditMode ? 'Failed to update job' : 'Failed to post job'));
     } finally {
       setLoading(false);
     }
@@ -76,10 +119,12 @@ const CreateJobPage = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
       <div>
         <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Publish a New Job Opportunity
+          {isEditMode ? 'Edit Job Posting' : 'Publish a New Job Opportunity'}
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          Define candidate criteria to activate real-time AI resume matching and ranking.
+          {isEditMode
+            ? 'Update job specifications, qualifications, and required skills.'
+            : 'Define candidate criteria to activate real-time AI resume matching and ranking.'}
         </p>
       </div>
 
@@ -286,7 +331,7 @@ const CreateJobPage = () => {
             disabled={loading}
             className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-600/25 transition flex items-center gap-1.5 disabled:opacity-50"
           >
-            {loading ? 'Publishing...' : 'Publish Job Posting'}
+            {isEditMode ? (loading ? 'Updating...' : 'Update Job Posting') : (loading ? 'Publishing...' : 'Publish Job Posting')}
             {!loading && <ArrowRight className="w-3.5 h-3.5" />}
           </button>
         </div>

@@ -122,6 +122,14 @@ function App() {
                 }
               />
               <Route
+                path="/recruiter/jobs/:jobId/edit"
+                element={
+                  <RoleRoute allowedRoles={['recruiter', 'admin']}>
+                    <CreateJobPage />
+                  </RoleRoute>
+                }
+              />
+              <Route
                 path="/recruiter/jobs/:jobId/applicants"
                 element={
                   <RoleRoute allowedRoles={['recruiter', 'admin']}>
