@@ -400,6 +400,44 @@ const updateProfile = async (req, res, next) => {
   }
 };
 
+/**
+ * Change current user password
+ */
+const changePassword = async (req, res, next) => {
+  try {
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return sendError(res, 'Current password and new password are required.', 400);
+    }
+    if (newPassword.length < 8) {
+      return sendError(res, 'New password must be at least 8 characters long.', 400);
+    }
+    if (confirmPassword && newPassword !== confirmPassword) {
+      return sendError(res, 'New passwords do not match.', 400);
+    }
+
+    const user = await User.findById(req.user.id).select('+password');
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return sendError(res, 'Current password does not match.', 400);
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    await logActivity({
+      userId: user._id,
+      action: 'PASSWORD_CHANGED',
+      resourceType: 'auth',
+      req,
+    });
+
+    return sendSuccess(res, null, 'Password updated successfully!');
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -408,5 +446,6 @@ module.exports = {
   forgotPassword,
   resetPassword,
   updateProfile,
+  changePassword,
 };
 

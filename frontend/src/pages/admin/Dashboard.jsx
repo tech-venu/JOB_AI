@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
   Users,
@@ -14,6 +15,7 @@ import {
   X,
   Search,
   Filter,
+  Settings,
 } from 'lucide-react';
 import api from '../../services/api';
 
@@ -122,6 +124,12 @@ const AdminDashboard = () => {
             System health, recruiter compliance verification, user management, and security audit logs.
           </p>
         </div>
+        <Link
+          to="/settings"
+          className="px-4 py-2.5 rounded-xl font-bold text-xs text-purple-200 bg-purple-900/60 hover:bg-purple-800 border border-purple-600/40 transition flex items-center gap-1.5 shrink-0"
+        >
+          <Settings className="w-4 h-4" /> Admin Security & Settings
+        </Link>
       </div>
 
       {/* Tabs */}

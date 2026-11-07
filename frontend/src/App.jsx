@@ -33,6 +33,9 @@ import AnalyticsPage from './pages/recruiter/AnalyticsPage';
 // Admin Pages
 import AdminDashboard from './pages/admin/Dashboard';
 
+// Shared Profile & Settings Page
+import ProfileSettingsPage from './pages/common/ProfileSettingsPage';
+
 function App() {
   return (
     <AuthProvider>
@@ -142,6 +145,24 @@ function App() {
                   <RoleRoute allowedRoles={['admin']}>
                     <AdminDashboard />
                   </RoleRoute>
+                }
+              />
+
+              {/* Shared Profile & Settings Protected Route */}
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <ProfileSettingsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileSettingsPage />
+                  </ProtectedRoute>
                 }
               />
 

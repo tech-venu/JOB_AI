@@ -16,6 +16,7 @@ import {
   MapPin,
   ChevronRight,
   Award,
+  Settings,
 } from 'lucide-react';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
@@ -133,6 +134,12 @@ const JobSeekerDashboard = () => {
             className="px-4 py-2.5 rounded-xl font-bold text-xs text-white bg-indigo-700/60 hover:bg-indigo-700 border border-indigo-500/40 transition flex items-center gap-1.5"
           >
             <BrainCircuit className="w-4 h-4" /> Analyze Skill Gap
+          </Link>
+          <Link
+            to="/settings"
+            className="px-4 py-2.5 rounded-xl font-bold text-xs text-indigo-100 bg-indigo-800/80 hover:bg-indigo-700 border border-indigo-600/50 transition flex items-center gap-1.5"
+          >
+            <Settings className="w-4 h-4" /> Profile & Settings
           </Link>
         </div>
       </div>

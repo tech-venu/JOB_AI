@@ -11,6 +11,7 @@ import {
   Building,
   BarChart3,
   Sparkles,
+  Settings,
 } from 'lucide-react';
 import {
   BarChart,
@@ -89,7 +90,7 @@ const RecruiterDashboard = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
           <Link
             to="/recruiter/jobs/create"
             className="px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-600/30 transition flex items-center gap-1.5"
@@ -101,6 +102,12 @@ const RecruiterDashboard = () => {
             className="px-4 py-2.5 rounded-xl font-bold text-xs text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5"
           >
             <BarChart3 className="w-4 h-4" /> Full Analytics
+          </Link>
+          <Link
+            to="/settings"
+            className="px-4 py-2.5 rounded-xl font-bold text-xs text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5"
+          >
+            <Settings className="w-4 h-4" /> Company & Settings
           </Link>
         </div>
       </div>
