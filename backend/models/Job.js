@@ -111,3 +111,4 @@ jobSchema.index({ employmentType: 1 });
 jobSchema.index({ location: 1 });
 
 module.exports = mongoose.model('Job', jobSchema);
+

@@ -27,3 +27,4 @@ router.put('/:id', protect, authorize('recruiter', 'admin'), updateJob);
 router.delete('/:id', protect, authorize('recruiter', 'admin'), deleteJob);
 
 module.exports = router;
+

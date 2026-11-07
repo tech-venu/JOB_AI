@@ -22,3 +22,4 @@ const savedJobSchema = new mongoose.Schema(
 savedJobSchema.index({ user: 1, job: 1 }, { unique: true });
 
 module.exports = mongoose.model('SavedJob', savedJobSchema);
+

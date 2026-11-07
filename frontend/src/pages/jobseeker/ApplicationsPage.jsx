@@ -219,3 +219,4 @@ const ApplicationsPage = () => {
 };
 
 export default ApplicationsPage;
+

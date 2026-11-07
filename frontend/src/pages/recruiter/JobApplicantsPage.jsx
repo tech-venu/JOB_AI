@@ -335,3 +335,4 @@ const JobApplicantsPage = () => {
 };
 
 export default JobApplicantsPage;
+

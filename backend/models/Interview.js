@@ -67,3 +67,4 @@ interviewSchema.index({ candidate: 1, scheduledAt: 1 });
 interviewSchema.index({ recruiter: 1, scheduledAt: 1 });
 
 module.exports = mongoose.model('Interview', interviewSchema);
+

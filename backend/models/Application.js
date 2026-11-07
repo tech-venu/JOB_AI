@@ -96,3 +96,4 @@ applicationSchema.index({ job: 1, candidate: 1 }, { unique: true });
 applicationSchema.index({ job: 1, matchScore: -1 });
 
 module.exports = mongoose.model('Application', applicationSchema);
+

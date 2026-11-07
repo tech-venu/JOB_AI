@@ -25,3 +25,4 @@ const logActivity = async ({ userId = null, action, resourceType, resourceId = n
 };
 
 module.exports = logActivity;
+

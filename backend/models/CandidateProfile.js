@@ -113,3 +113,4 @@ candidateProfileSchema.index({ location: 1 });
 candidateProfileSchema.index({ experienceLevel: 1 });
 
 module.exports = mongoose.model('CandidateProfile', candidateProfileSchema);
+

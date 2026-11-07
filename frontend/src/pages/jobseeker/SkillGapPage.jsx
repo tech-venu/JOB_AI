@@ -246,3 +246,4 @@ const SkillGapPage = () => {
 };
 
 export default SkillGapPage;
+

@@ -21,3 +21,4 @@ router.patch('/:id/status', protect, authorize('recruiter', 'admin'), updateAppl
 router.get('/:id', protect, getApplicationById);
 
 module.exports = router;
+

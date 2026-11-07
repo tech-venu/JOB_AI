@@ -113,3 +113,4 @@ const analyzeResumeQuality = (rawText, parsedData) => {
 module.exports = {
   analyzeResumeQuality,
 };
+

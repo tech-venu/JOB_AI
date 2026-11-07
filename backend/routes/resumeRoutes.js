@@ -19,3 +19,4 @@ router.post('/:id/analyze', protect, analyzeResume);
 router.put('/:id/parsed-data', protect, updateParsedData);
 
 module.exports = router;
+

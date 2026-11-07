@@ -53,3 +53,4 @@ export const RoleRoute = ({ children, allowedRoles }) => {
 
   return children;
 };
+

@@ -47,3 +47,4 @@ const skillSchema = new mongoose.Schema(
 skillSchema.index({ name: 'text', aliases: 'text' });
 
 module.exports = mongoose.model('Skill', skillSchema);
+

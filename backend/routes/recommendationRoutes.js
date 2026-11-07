@@ -22,3 +22,4 @@ router.post('/analyze', protect, analyzeCompatibility);
 router.post('/assistant', protect, careerAssistantChat);
 
 module.exports = router;
+

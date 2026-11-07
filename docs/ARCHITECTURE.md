@@ -62,3 +62,4 @@ Where:
 10. `Interview`: Scheduled interview rounds, timestamps, meeting links, and feedback.
 11. `ActivityLog`: Security and administrative audit trail.
 12. `PasswordResetToken`: SHA-256 hashed password reset tokens with automatic TTL index expiration.
+

@@ -20,3 +20,4 @@ router.get('/jobs', getAllJobsAdmin);
 router.get('/activity', getActivityLogs);
 
 module.exports = router;
+

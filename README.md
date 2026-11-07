@@ -183,3 +183,4 @@ HireMatch AI adheres strictly to fair recruitment principles. The matching algor
 ## 9. License
 
 This project is licensed under the ISC License. Developed for MCA Major Project requirements.
+

@@ -77,3 +77,4 @@ const target2 = path.join(__dirname, '../../frontend/public/samples/Venu_Gopal_F
 
 createPdfWithText(target1, sampleCandidateLines);
 createPdfWithText(target2, sampleCandidateLines);
+

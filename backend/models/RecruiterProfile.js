@@ -66,3 +66,4 @@ recruiterProfileSchema.index({ companyName: 1 });
 recruiterProfileSchema.index({ verificationStatus: 1 });
 
 module.exports = mongoose.model('RecruiterProfile', recruiterProfileSchema);
+

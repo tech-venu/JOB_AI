@@ -112,3 +112,4 @@ Retrieve candidate pool for a specific job with **AI Candidate Ranking** (#1, #2
 
 ### `PATCH /api/applications/:id/status`
 Update application stage (`under_review`, `shortlisted`, `interview_scheduled`, `selected`, `rejected`) with audit comment.
+

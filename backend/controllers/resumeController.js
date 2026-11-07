@@ -236,3 +236,4 @@ module.exports = {
   analyzeResume,
   updateParsedData,
 };
+

@@ -90,3 +90,4 @@ const SKILL_TAXONOMY = {
 };
 
 module.exports = SKILL_TAXONOMY;
+

@@ -115,7 +115,7 @@ app.use('*', (req, res) => {
 // Centralized Error Handling Middleware
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Export app for automated testing (Supertest)
 if (process.env.NODE_ENV !== 'test') {
@@ -125,3 +125,4 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 module.exports = app;
+

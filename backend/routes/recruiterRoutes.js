@@ -14,3 +14,4 @@ router.get('/candidates', getCandidates);
 router.get('/analytics', getRecruiterAnalytics);
 
 module.exports = router;
+
