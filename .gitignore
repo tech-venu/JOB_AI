@@ -20,6 +20,7 @@ uploads/
 *.pdf
 *.docx
 !frontend/public/samples/*.pdf
+!docs/*.pdf
 
 # Logs & Debug
 npm-debug.log*

@@ -82,7 +82,7 @@ const LandingPage = () => {
         <div className="mt-12 p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 max-w-3xl mx-auto text-left">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-indigo-600" /> MCA Project Evaluator 1-Click Access
+              <ShieldCheck className="w-4 h-4 text-indigo-600" /> Interactive Demo 1-Click Access
             </span>
             <span className="text-[11px] text-slate-500">Live Seeded Accounts</span>
           </div>
@@ -98,7 +98,7 @@ const LandingPage = () => {
                 </span>
                 <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-0.5 transition" />
               </div>
-              <p className="text-[10px] text-slate-500 mt-0.5">Venu Gopal (MCA Candidate)</p>
+              <p className="text-[10px] text-slate-500 mt-0.5">Software Engineer Candidate</p>
             </button>
 
             <button

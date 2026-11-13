@@ -1,18 +1,18 @@
 import React from 'react';
-import { Sparkles, Code2, ShieldCheck, Database, Award, ExternalLink } from 'lucide-react';
+import { Sparkles, Code2, ShieldCheck, Database, Award, CheckCircle2 } from 'lucide-react';
 
 const AboutPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="max-w-3xl mx-auto text-center mb-14">
         <span className="text-xs font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-          About The Project
+          About The Platform
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
-          HireMatch AI Project Overview
+          HireMatch AI Architecture & Engineering
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-          HireMatch AI was architected as an MCA Major Project to demonstrate advanced software engineering, robust full-stack architecture, secure authentication, and practical AI/NLP integration.
+          HireMatch AI is an intelligent recruitment platform engineered to connect job seekers and hiring teams through explainable resume analysis, mathematical vector matching, and automated candidate ranking.
         </p>
       </div>
 
@@ -44,21 +44,16 @@ const AboutPage = () => {
 
       <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 max-w-3xl mx-auto">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2">
-          <Award className="w-5 h-5 text-indigo-600" /> Academic & Engineering Compliance
+          <Award className="w-5 h-5 text-indigo-600" /> Engineering & Security Standards
         </h3>
         <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-          Developed according to rigorous software engineering best practices: test-driven development (TDD) with Jest, responsive UI/UX design, environment variable protection, role-based authorization, and deployment readiness on Vercel and Render.
+          Developed according to rigorous software engineering best practices: test-driven development (TDD) with Jest, responsive UI/UX design, environment variable protection, role-based authorization, centralized error handling, and cloud deployment readiness.
         </p>
-        <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
-          <span className="font-semibold text-slate-700 dark:text-slate-300">GitHub Repository:</span>
-          <a
-            href="https://github.com/tech-venu"
-            target="_blank"
-            rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline inline-flex items-center gap-1"
-          >
-            tech-venu/hirematch-ai <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+        <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+          <span className="font-semibold text-slate-700 dark:text-slate-300">Platform Status:</span>
+          <span className="inline-flex items-center gap-1.5 text-emerald-600 font-bold">
+            <CheckCircle2 className="w-4 h-4" /> Production Grade & Verified
+          </span>
         </div>
       </div>
     </div>
