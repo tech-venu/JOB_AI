@@ -8,7 +8,9 @@
 [![Tests](https://img.shields.io/badge/Tests-15%20Passed-brightgreen.svg)]()
 
 > **Tagline:** "Your Skills. Your Career. Your Perfect Match."  
-> **Degree Program:** MCA Major Project  
+> 📄 **Complete Project Report (PDF):** [HireMatch_AI_Complete_Project_Report.pdf](./HireMatch_AI_Complete_Project_Report.pdf) (23 Pages with Live Screenshots & Algorithms)  
+> 📑 **Documentation Report (Markdown):** [docs/PROJECT_REPORT.md](./docs/PROJECT_REPORT.md)  
+> 🌐 **Interactive HTML Report:** [docs/HireMatch_AI_Complete_Project_Report.html](./docs/HireMatch_AI_Complete_Project_Report.html)  
 > **Author & Repository:** [tech-venu/hirematch-ai](https://github.com/tech-venu)
 
 ---

@@ -21,6 +21,7 @@ uploads/
 *.docx
 !frontend/public/samples/*.pdf
 !docs/*.pdf
+!/HireMatch_AI_Complete_Project_Report.pdf
 
 # Logs & Debug
 npm-debug.log*
