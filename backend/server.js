@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const connectDB = require('./config/db');
+const { testMySQLConnection, getMySQLPool } = require('./config/mysql');
 const errorHandler = require('./middleware/errorHandler');
 
 // Route Imports
@@ -25,8 +26,9 @@ const notificationRoutes = require('./routes/notificationRoutes');
 
 const app = express();
 
-// Connect to Database
+// Connect to Databases (MongoDB + MySQL XAMPP)
 connectDB();
+testMySQLConnection();
 
 // Security Headers
 app.use(
@@ -96,14 +98,44 @@ app.use('/api', limiter);
 app.use('/uploads', express.static(path.join(__dirname, process.env.UPLOAD_DIR || 'uploads')));
 
 // Health Check API
-app.get('/api/health', (req, res) => {
+app.get('/api/health', async (req, res) => {
+  const mysqlStatus = await testMySQLConnection();
   res.status(200).json({
     status: 'healthy',
     application: 'HireMatch AI Backend',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
-    database: 'Connected',
+    databases: {
+      mongodb: 'Connected (hirematch_ai)',
+      mysql: mysqlStatus.connected ? `Connected (${mysqlStatus.database} via XAMPP phpMyAdmin)` : 'Optional',
+    },
   });
+});
+
+// Live MySQL phpMyAdmin Database Stats Endpoint
+app.get('/api/database/mysql-stats', async (req, res) => {
+  try {
+    const pool = getMySQLPool();
+    const [tables] = await pool.query('SHOW TABLES');
+    const [userCount] = await pool.query('SELECT COUNT(*) AS count FROM users');
+    const [jobCount] = await pool.query('SELECT COUNT(*) AS count FROM jobs');
+    const [appCount] = await pool.query('SELECT COUNT(*) AS count FROM applications');
+    const [profileCount] = await pool.query('SELECT COUNT(*) AS count FROM candidate_profiles');
+    res.json({
+      success: true,
+      database: 'JOB_AI',
+      connection: 'MySQL / MariaDB via XAMPP phpMyAdmin (Port 3306)',
+      tables: tables.map((t) => Object.values(t)[0]),
+      counts: {
+        users: userCount[0].count,
+        jobs: jobCount[0].count,
+        applications: appCount[0].count,
+        candidateProfiles: profileCount[0].count,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // API Routes
