@@ -4,15 +4,14 @@ const resolveBaseUrl = () => {
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL;
   }
-  // When running in Vite dev server (port 5173), use proxy /api
   if (typeof window !== 'undefined') {
-    if (window.location.port === '5173') {
-      return '/api';
+    // When served via XAMPP Apache or tunnel under /dashboard/VJOBAI/, use reverse-proxied /dashboard/VJOBAI/api
+    // This eliminates mixed-content HTTPS errors, cross-port firewall blocks, and CORS issues entirely.
+    if (window.location.pathname.startsWith('/dashboard/VJOBAI')) {
+      return '/dashboard/VJOBAI/api';
     }
-    // When served via XAMPP Apache (port 80), localhost, or LAN IP (e.g. 172.22.225.121),
-    // dynamically target port 5001 on the same host so localhost, 127.0.0.1, and LAN all work cleanly
-    const host = window.location.hostname || 'localhost';
-    return `http://${host}:5001/api`;
+    // In dev server (port 5173) or direct node hosting, use relative /api
+    return '/api';
   }
   return 'http://localhost:5001/api';
 };
