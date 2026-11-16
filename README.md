@@ -8,6 +8,9 @@
 [![Tests](https://img.shields.io/badge/Tests-15%20Passed-brightgreen.svg)]()
 
 > **Tagline:** "Your Skills. Your Career. Your Perfect Match."  
+> 🌐 **Live Demo (GitHub Pages):** [https://tech-venu.github.io/hirematch-ai/](https://tech-venu.github.io/hirematch-ai/)  
+> 🚀 **1-Click Vercel Deploy:** [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tech-venu/hirematch-ai&root-directory=frontend)  
+> ☁️ **1-Click Render Deploy:** [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tech-venu/hirematch-ai)  
 > 📄 **Complete Project Report (PDF):** [HireMatch_AI_Complete_Project_Report.pdf](./HireMatch_AI_Complete_Project_Report.pdf) (23 Pages with Live Screenshots & Algorithms)  
 > 📑 **Documentation Report (Markdown):** [docs/PROJECT_REPORT.md](./docs/PROJECT_REPORT.md)  
 > 🌐 **Interactive HTML Report:** [docs/HireMatch_AI_Complete_Project_Report.html](./docs/HireMatch_AI_Complete_Project_Report.html)  
