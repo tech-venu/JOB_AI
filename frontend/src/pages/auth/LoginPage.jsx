@@ -81,7 +81,7 @@ const LoginPage = () => {
             </div>
           </Link>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Welcome Back to HireMatch AI
+            Welcome Back to VJOBAI
           </h2>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Sign in to access your dashboard, recommendations, and analytics.

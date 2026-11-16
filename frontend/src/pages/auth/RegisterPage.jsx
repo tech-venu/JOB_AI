@@ -116,7 +116,7 @@ const RegisterPage = () => {
             </div>
           </Link>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Create Your HireMatch AI Account
+            Create Your VJOBAI Account
           </h2>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Select your account type to access personalized recruitment features.

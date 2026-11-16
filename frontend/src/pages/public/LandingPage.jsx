@@ -59,7 +59,7 @@ const LandingPage = () => {
         </h1>
 
         <p className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          HireMatch AI automates resume screening, extracts key technical competencies, pinpoints skill gaps, and calculates explainable compatibility scores using TF-IDF NLP algorithms.
+          VJOBAI automates resume screening, extracts key technical competencies, pinpoints skill gaps, and calculates explainable compatibility scores using TF-IDF NLP algorithms.
         </p>
 
         {/* Action CTAs */}
@@ -347,7 +347,7 @@ const LandingPage = () => {
               Ready to Match Your Skills with the Right Role?
             </h3>
             <p className="mt-3 text-sm text-indigo-200">
-              Join HireMatch AI today as a Job Seeker or Recruiter and experience algorithmic hiring efficiency.
+              Join VJOBAI today as a Job Seeker or Recruiter and experience algorithmic hiring efficiency.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link

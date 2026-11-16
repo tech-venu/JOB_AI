@@ -45,10 +45,10 @@ const Navbar = () => {
             </div>
             <div>
               <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
-                HireMatch<span className="text-indigo-600 dark:text-indigo-400"> AI</span>
+                VJOB<span className="text-indigo-600 dark:text-indigo-400">AI</span>
               </span>
               <p className="text-[9px] uppercase tracking-wider font-semibold text-slate-500 -mt-1 hidden sm:block">
-                Intelligent Recruitment
+                By Venu • AI Recruitment
               </p>
             </div>
           </Link>

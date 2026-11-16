@@ -48,7 +48,7 @@ const HowItWorksPage = () => {
           The Process
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
-          How HireMatch AI Works
+          How VJOBAI Works
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
           From document upload to interview shortlisting: our intelligent pipeline removes ambiguity and streamlines matching.

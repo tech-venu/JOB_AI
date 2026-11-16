@@ -27,7 +27,7 @@ describe('HireMatch AI - Comprehensive Backend & AI Unit Tests', () => {
       const res = await request(app).get('/api/health');
       expect(res.statusCode).toBe(200);
       expect(res.body.status).toBe('healthy');
-      expect(res.body.application).toBe('HireMatch AI Backend');
+      expect(res.body.application).toBe('VJOBAI Backend by Venu');
     });
 
     it('GET /api/jobs should return a paginated list of active jobs', async () => {

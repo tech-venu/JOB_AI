@@ -15,7 +15,7 @@ const CareerAssistantPage = () => {
   const [messages, setMessages] = useState([
     {
       sender: 'assistant',
-      text: `Hello! I am your **HireMatch AI Career Assistant**.\n\nI can help you with:\n- **Resume Enhancement**: Optimizing for ATS keywords and quantifiable achievements.\n- **Interview Preparation**: Behavioral (STAR method) and technical deep-dives.\n- **Skill Roadmaps**: Bridging skill gaps for targeted full-stack or AI roles.\n- **Salary Negotiation**: Effective benchmark-backed strategies.\n\nWhat would you like to explore today?`,
+      text: `Hello! I am your **VJOBAI Career Assistant** (by Venu).\n\nI can help you with:\n- **Resume Enhancement**: Optimizing for ATS keywords and quantifiable achievements.\n- **Interview Preparation**: Behavioral (STAR method) and technical deep-dives.\n- **Skill Roadmaps**: Bridging skill gaps for targeted full-stack or AI roles.\n- **Salary Negotiation**: Effective benchmark-backed strategies.\n\nWhat would you like to explore today?`,
     },
   ]);
   const [input, setInput] = useState('');

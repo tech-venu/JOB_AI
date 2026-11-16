@@ -102,7 +102,7 @@ app.get('/api/health', async (req, res) => {
   const mysqlStatus = await testMySQLConnection();
   res.status(200).json({
     status: 'healthy',
-    application: 'HireMatch AI Backend',
+    application: 'VJOBAI Backend by Venu',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
     databases: {
@@ -164,7 +164,7 @@ const PORT = process.env.PORT || 5001;
 // Export app for automated testing (Supertest)
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
-    console.log(`[HireMatch AI] Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    console.log(`[VJOBAI] Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
   });
 }
 

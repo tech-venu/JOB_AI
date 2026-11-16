@@ -23,10 +23,10 @@ const FeaturesPage = () => {
           Core AI Capabilities
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
-          Deep Dive: HireMatch AI Technologies
+          Deep Dive: VJOBAI Technologies
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-          HireMatch AI is engineered with transparent, explainable Natural Language Processing algorithms to eliminate black-box bias, improve candidate shortlisting, and empower career advancement.
+          VJOBAI is engineered with transparent, explainable Natural Language Processing algorithms to eliminate black-box bias, improve candidate shortlisting, and empower career advancement.
         </p>
       </div>
 

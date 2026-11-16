@@ -9,10 +9,10 @@ const AboutPage = () => {
           About The Platform
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
-          HireMatch AI Architecture & Engineering
+          VJOBAI Architecture & Engineering
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
-          HireMatch AI is an intelligent recruitment platform engineered to connect job seekers and hiring teams through explainable resume analysis, mathematical vector matching, and automated candidate ranking.
+          VJOBAI is an intelligent recruitment platform engineered by Venu to connect job seekers and hiring teams through explainable resume analysis, mathematical vector matching, and automated candidate ranking.
         </p>
       </div>
 
