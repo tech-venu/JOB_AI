@@ -15,6 +15,11 @@ describe('HireMatch AI - Comprehensive Backend & AI Unit Tests', () => {
 
   afterAll(async () => {
     await mongoose.connection.close();
+    try {
+      const { getMySQLPool } = require('../config/mysql');
+      const pool = getMySQLPool();
+      if (pool) await pool.end();
+    } catch (e) {}
   });
 
   describe('1. Health Check & Public Endpoints', () => {
