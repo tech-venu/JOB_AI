@@ -4,11 +4,17 @@ const resolveBaseUrl = () => {
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL;
   }
-  // When running on XAMPP Apache (port 80 or 8080) or direct file preview, connect to Node backend
-  if (typeof window !== 'undefined' && window.location.port !== '5173') {
-    return 'http://localhost:5001/api';
+  // When running in Vite dev server (port 5173), use proxy /api
+  if (typeof window !== 'undefined') {
+    if (window.location.port === '5173') {
+      return '/api';
+    }
+    // When served via XAMPP Apache (port 80), localhost, or LAN IP (e.g. 172.22.225.121),
+    // dynamically target port 5001 on the same host so localhost, 127.0.0.1, and LAN all work cleanly
+    const host = window.location.hostname || 'localhost';
+    return `http://${host}:5001/api`;
   }
-  return '/api';
+  return 'http://localhost:5001/api';
 };
 
 const api = axios.create({

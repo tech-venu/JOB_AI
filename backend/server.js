@@ -30,46 +30,24 @@ const app = express();
 connectDB();
 testMySQLConnection();
 
-// Security Headers
+// Security Headers - disable CSP on API to prevent upgrading HTTP to HTTPS on local/XAMPP
 app.use(
   helmet({
+    contentSecurityPolicy: false,
     crossOriginResourcePolicy: { policy: 'cross-origin' },
   })
 );
 
-// CORS configuration
-const allowedOrigins = [
-  process.env.CLIENT_URL,
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'http://localhost',
-  'http://127.0.0.1',
-  'http://localhost:80',
-  'http://localhost:8080',
-  'http://localhost:3000',
-  'https://tech-venu.github.io',
-].filter(Boolean);
-
+// CORS configuration - dynamic origin allowing localhost, 127.0.0.1, LAN IPs, and clients
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (mobile apps, curl, postman)
-      // or from explicit origins, or any local XAMPP / Apache / development origin
-      if (
-        !origin ||
-        allowedOrigins.includes(origin) ||
-        origin.startsWith('http://localhost') ||
-        origin.startsWith('http://127.0.0.1')
-      ) {
-        return callback(null, true);
-      }
-      return callback(new Error('Not allowed by CORS'));
-    },
+    origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   })
 );
+app.options('*', cors());
 
 // Body parsers
 app.use(express.json({ limit: '10mb' }));
@@ -163,8 +141,8 @@ const PORT = process.env.PORT || 5001;
 
 // Export app for automated testing (Supertest)
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`[VJOBAI] Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[VJOBAI] Server running in ${process.env.NODE_ENV || 'development'} mode on http://0.0.0.0:${PORT}`);
   });
 }
 
