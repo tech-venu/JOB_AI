@@ -1,7 +1,18 @@
 import axios from 'axios';
 
+const resolveBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  // When running on XAMPP Apache (port 80 or 8080) or direct file preview, connect to Node backend
+  if (typeof window !== 'undefined' && window.location.port !== '5173') {
+    return 'http://localhost:5001/api';
+  }
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: resolveBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },

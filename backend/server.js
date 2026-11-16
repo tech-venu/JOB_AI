@@ -37,16 +37,28 @@ app.use(
 
 // CORS configuration
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
-  'http://localhost:3000',
+  process.env.CLIENT_URL,
+  'http://localhost:5173',
   'http://127.0.0.1:5173',
-];
+  'http://localhost',
+  'http://127.0.0.1',
+  'http://localhost:80',
+  'http://localhost:8080',
+  'http://localhost:3000',
+  'https://tech-venu.github.io',
+].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // allow requests with no origin (like mobile apps, curl, postman)
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (mobile apps, curl, postman)
+      // or from explicit origins, or any local XAMPP / Apache / development origin
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.startsWith('http://localhost') ||
+        origin.startsWith('http://127.0.0.1')
+      ) {
         return callback(null, true);
       }
       return callback(new Error('Not allowed by CORS'));

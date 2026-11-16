@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Optional: Proxy /api requests to the Node.js backend if mod_proxy is enabled in Apache
+  <IfModule mod_proxy.c>
+    RewriteRule ^api/(.*) http://localhost:5001/api/$1 [P,L]
+  </IfModule>
+
+  # SPA Routing: Send all non-file/non-directory requests to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Security & Cache Headers
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+  Header set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+</IfModule>
