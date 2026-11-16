@@ -12,6 +12,7 @@ dotenv.config();
 
 const connectDB = require('./config/db');
 const { testMySQLConnection, getMySQLPool } = require('./config/mysql');
+const { syncAllExistingMongoData } = require('./services/mysqlSyncService');
 const errorHandler = require('./middleware/errorHandler');
 
 // Route Imports
@@ -26,9 +27,20 @@ const notificationRoutes = require('./routes/notificationRoutes');
 
 const app = express();
 
-// Connect to Databases (MongoDB + MySQL XAMPP)
-connectDB();
-testMySQLConnection();
+// Connect to Databases and Synchronize data into XAMPP MySQL JOB_AI
+const initDatabases = async () => {
+  try {
+    await connectDB();
+    const mysqlStatus = await testMySQLConnection();
+    if (mysqlStatus.connected) {
+      const models = require('./models');
+      await syncAllExistingMongoData(models);
+    }
+  } catch (err) {
+    console.error('[Database Init Error]', err.message);
+  }
+};
+initDatabases();
 
 // Security Headers - disable CSP on API to prevent upgrading HTTP to HTTPS on local/XAMPP
 app.use(

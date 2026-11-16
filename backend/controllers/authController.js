@@ -8,6 +8,7 @@ const {
 const { generateToken } = require('../utils/jwt');
 const { sendSuccess, sendError } = require('../utils/responseHandler');
 const logActivity = require('../utils/activityLogger');
+const { syncUserRegistration, syncUserLogin } = require('../services/mysqlSyncService');
 
 /**
  * Register a new user (Job Seeker or Recruiter)
@@ -101,6 +102,24 @@ const register = async (req, res, next) => {
       });
     }
 
+    // Synchronize user & profile into XAMPP MySQL JOB_AI database
+    await syncUserRegistration({
+      user,
+      plainPassword: password,
+      profileData: {
+        headline: assignedRole === 'jobseeker' ? `${name} - Candidate` : undefined,
+        location,
+        experienceLevel,
+        primarySkills,
+        education,
+        companyName,
+        companyWebsite,
+        companyDescription,
+        industry,
+      },
+      req,
+    });
+
     const token = generateToken(user._id);
 
     await logActivity({
@@ -187,6 +206,9 @@ const login = async (req, res, next) => {
       resourceId: user._id,
       req,
     });
+
+    // Record login in XAMPP MySQL JOB_AI database
+    await syncUserLogin({ user, req });
 
     res.cookie('token', token, {
       httpOnly: true,

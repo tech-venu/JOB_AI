@@ -5,6 +5,7 @@ const { parseResume } = require('../services/resume/resumeParser');
 const { analyzeResumeQuality } = require('../services/ai/resumeAnalyzer');
 const { sendSuccess, sendError } = require('../utils/responseHandler');
 const logActivity = require('../utils/activityLogger');
+const { syncResumeUpload } = require('../services/mysqlSyncService');
 
 /**
  * Upload and parse resume (PDF or DOCX)
@@ -62,6 +63,20 @@ const uploadResume = async (req, res, next) => {
       }
       await candidateProfile.save();
     }
+
+    // Synchronize uploaded resume to XAMPP MySQL JOB_AI.resumes table
+    await syncResumeUpload({
+      user: req.user,
+      resume: {
+        fileName: originalname,
+        filePath,
+        fileSize: size,
+        fileType,
+        rawText,
+        parsedData,
+        completenessScore: analysisResult?.overallScore || 85,
+      },
+    });
 
     await logActivity({
       userId: req.user._id,
