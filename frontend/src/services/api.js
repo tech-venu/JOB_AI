@@ -23,7 +23,12 @@ const resolveBaseUrl = () => {
       return '/api';
     }
 
-    // 5. LAN IP / unknown — dynamically target port 5001 on the same host
+    // 5. GitHub Pages deployment: connect to live public tunnel backend
+    if (hostname.includes('github.io')) {
+      return 'https://vjobai-venu.loca.lt/dashboard/VJOBAI/api';
+    }
+
+    // 6. LAN IP / unknown — dynamically target port 5001 on the same host
     return `http://${hostname}:5001/api`;
   }
   return 'http://localhost:5001/api';
@@ -33,6 +38,7 @@ const api = axios.create({
   baseURL: resolveBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
+    'Bypass-Tunnel-Reminder': 'true',
   },
 });
 
