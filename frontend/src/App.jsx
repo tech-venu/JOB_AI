@@ -37,7 +37,9 @@ import AdminDashboard from './pages/admin/Dashboard';
 import ProfileSettingsPage from './pages/common/ProfileSettingsPage';
 
 function App() {
-  const basename = import.meta.env.BASE_URL ? import.meta.env.BASE_URL.replace(/\/$/, '') : '';
+  // On Vercel/cloud (base = '/'), basename is '' — on XAMPP (base='/dashboard/VJOBAI/'), it uses the path
+  const base = import.meta.env.BASE_URL || '/';
+  const basename = base === '/' ? '' : base.replace(/\/$/, '');
   return (
     <AuthProvider>
       <Router basename={basename}>

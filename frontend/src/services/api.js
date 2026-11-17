@@ -1,17 +1,30 @@
 import axios from 'axios';
 
 const resolveBaseUrl = () => {
+  // 1. Explicit env var — set this in Vercel/Render dashboard to your backend URL
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL;
   }
   if (typeof window !== 'undefined') {
-    // When served via XAMPP Apache or tunnel under /dashboard/VJOBAI/, use reverse-proxied /dashboard/VJOBAI/api
-    // This eliminates mixed-content HTTPS errors, cross-port firewall blocks, and CORS issues entirely.
-    if (window.location.pathname.startsWith('/dashboard/VJOBAI')) {
+    const { hostname, port, pathname } = window.location;
+
+    // 2. Local XAMPP Apache: served under /dashboard/VJOBAI/
+    if (pathname.startsWith('/dashboard/VJOBAI')) {
       return '/dashboard/VJOBAI/api';
     }
-    // In dev server (port 5173) or direct node hosting, use relative /api
-    return '/api';
+
+    // 3. Vite dev server (port 5173) — use Vite proxy /api
+    if (port === '5173') {
+      return '/api';
+    }
+
+    // 4. Cloud/Vercel deployment at root — relative /api (handled by vercel.json rewrites)
+    if (hostname.includes('vercel.app') || hostname.includes('render.com') || hostname.includes('netlify.app')) {
+      return '/api';
+    }
+
+    // 5. LAN IP / unknown — dynamically target port 5001 on the same host
+    return `http://${hostname}:5001/api`;
   }
   return 'http://localhost:5001/api';
 };

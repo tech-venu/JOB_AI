@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || '/dashboard/VJOBAI/',
+  // base: '/' for Vercel/Render cloud deployment
+  // base: '/dashboard/VJOBAI/' for local XAMPP Apache deployment
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [react()],
   server: {
     port: 5173,
